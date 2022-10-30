@@ -117,7 +117,7 @@ class Collector(object):
             settings['auto_manage_interval'] = self._auto_manage_interval
             settings['dht_announce_interval'] = self._dht_announce_interval
             settings['alert_queue_size'] = self._alert_queue_size
-            session.set_settings(settings)
+            session.apply_settings(settings)
             self._sessions.append(session)
         return self._sessions
 
@@ -201,8 +201,8 @@ class Collector(object):
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
-        print 'argument err:'
-        print '\tpython collector.py result.json collector.state\n'
+        print ('argument err:')
+        print ('\tpython collector.py result.json collector.state\n')
         sys.exit(-1)
 
     result_file = sys.argv[1]
