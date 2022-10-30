@@ -83,14 +83,14 @@ class Collector(object):
                 alert.handle.set_upload_limit(self._torrent_upload_limit)
                 alert.handle.set_download_limit(self._torrent_download_limit)
             elif isinstance(alert, lt.dht_announce_alert):
-                info_hash = alert.info_hash.to_string().encode('hex')
+                info_hash = alert.info_hash.to_string().hex()
                 if info_hash in self._meta_list:
                     self._meta_list[info_hash] += 1
                 else:
                     self._meta_list[info_hash] = 1
                     self._current_meta_count += 1
             elif isinstance(alert, lt.dht_get_peers_alert):
-                info_hash = alert.info_hash.to_string().encode('hex')
+                info_hash = alert.info_hash.to_string().hex()
                 if info_hash in self._meta_list:
                     self._meta_list[info_hash] += 1
                 else:
